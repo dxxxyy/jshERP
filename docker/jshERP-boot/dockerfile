@@ -1,0 +1,15 @@
+# 基础镜像
+FROM  openjdk:8-jre
+# author
+MAINTAINER qianlang
+
+# 挂载目录
+VOLUME /home/qianlang
+# 创建目录
+RUN mkdir -p /home/qianlang
+# 指定路径
+WORKDIR /home/qianlang
+# 复制jar文件到路径
+COPY ./docker/jshERP-boot/jar/jshERP.jar /home/qianlang/jshERP.jar
+# 启动服务
+ENTRYPOINT ["java","-jar","jshERP.jar"]
